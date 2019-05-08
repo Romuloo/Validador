@@ -55,4 +55,6 @@ public class Master{
     public Set<Asignatura> getCjtoAsignaturas() {
         return cjtoAsignaturas;
     }
+
+   
 } 

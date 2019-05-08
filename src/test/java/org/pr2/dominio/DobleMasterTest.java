@@ -46,11 +46,12 @@ public class DobleMasterTest
      * Este test comprueba si las asignaturas de cada máster están en
      * en el doble máster. Se asume que no hay <i>mappings</i>.  
      */
-    @Test
+    @Test 
     public void coberturaCadaMasterEnElDobleMasterSinMappings()
     {
         assertTrue(dobleMasterCorrectoSinMappings.coberturaCadaMaster());
     }
+
 
     /**
      * Este test comprueba si las asignaturas del doble máster están en
@@ -59,7 +60,7 @@ public class DobleMasterTest
     @Test
     public void precisionDobleMasterSinMappings()
     {
-        assertTrue( true );
+        assertTrue(dobleMasterCorrectoSinMappings.precisionDobleMaster());
     }
     
     /**

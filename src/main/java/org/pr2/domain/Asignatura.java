@@ -28,6 +28,10 @@ public class Asignatura implements Comparable<Asignatura>{
         return this.identificador - asignatura.identificador;
     }
 
+    public int hashCode()
+    {
+	return identificador;
+    }
     /**
      * Obtiene el identificador de la asignatura.
      *

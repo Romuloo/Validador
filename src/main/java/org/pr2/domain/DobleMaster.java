@@ -6,9 +6,8 @@ import java.util.stream.Collectors;
 
 /**
  * @author Mariano Fernández López
+ * @author Javier Linares Castrillón
  *
- * AVISO: si el estudiante detecta código no válido, deberá
- * modificarlo para que lo sea.
  *
  * Cualquier doble máster tiene un identificador, un nombre, un conjunto
  * de asignaturas, una relación con los dos máster que engloba, y una
@@ -66,7 +65,24 @@ public class DobleMaster extends Master{
        for(int i = 0; i <= 1; i++)
         cubiertos = cubiertos && arrayMaster[i].getCjtoAsignaturas().stream().
            filter(a -> !this.getCjtoAsignaturas().contains(a)).
-                   collect(Collectors.toSet()).isEmpty(); 
+                   collect(Collectors.toSet()).isEmpty();
        return cubiertos; 
+    }
+
+    /**
+     * <li><b>Precisión del doble máster</b>: para toda asignatura del doble
+     * máster, bien pertenece al máster 1 bien pertenece al máster 2.</li>
+     */
+
+    public boolean precisionDobleMaster(){
+	boolean preciso = true;
+
+        for(Asignatura a : this.getCjtoAsignaturas()){
+	
+       if(!(arrayMaster[0].getCjtoAsignaturas().contains(a)) || !arrayMaster[1].getCjtoAsignaturas().contains(a)) {
+                        preciso = false;
+                        break;
+                }
+	}return preciso ;
     }
 }
