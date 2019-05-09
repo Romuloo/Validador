@@ -85,4 +85,27 @@ public class DobleMaster extends Master{
                 }
 	}return preciso ;
     }
+
+ /**
+  * <li><b>Secuenciación correcta</b>: no se da el caso de que una
+  * asignatura aparezca en distinto semestre en un máster simple y en el
+  * máster doble.</li>
+  */
+
+   public boolean secuenciacionCorrecta(){
+	  boolean correcta  = true;
+	  for(int s = 1; s <= 2; s++){
+		  int i = s;
+	  	correcta = correcta && (arrayMaster[0].getCjtoAsignaturasSemestre(i).stream().
+           filter(a -> !this.getCjtoAsignaturasSemestre(i).contains(a)).
+                   collect(Collectors.toSet()).isEmpty() || arrayMaster[1].getCjtoAsignaturasSemestre(i).stream().filter(a -> !this.getCjtoAsignaturasSemestre(i).contains(a)).collect(Collectors.toSet()).isEmpty());
+	  
+	  }return correcta;
+   }
+
+
+   public boolean valido()
+   {
+	   return secuenciacionCorrecta() && coberturaCadaMaster() && precisionDobleMaster();
+   }
 }

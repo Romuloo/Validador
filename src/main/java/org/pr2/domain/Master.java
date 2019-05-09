@@ -1,5 +1,6 @@
 package org.pr2.dominio;
 
+import java.util.stream.Collectors; 
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -52,9 +53,20 @@ public class Master{
         this.nombre = nombre;
     }
 
+    /**
+     * Devuelve el conjunto de Asignaturas.
+     */
     public Set<Asignatura> getCjtoAsignaturas() {
         return cjtoAsignaturas;
     }
 
-   
+    /**
+     * Devuelve el conjunto de Asignaturas del semestre especificado.
+     * @param i semestre.
+     * @return conjunto de Asignaturas del semestre i.
+     */
+    public Set<Asignatura> getCjtoAsignaturasSemestre(int i){
+	return cjtoAsignaturas.stream().filter(a -> a.getSemestre() == i).collect(Collectors.toSet());
+    }	
+
 } 

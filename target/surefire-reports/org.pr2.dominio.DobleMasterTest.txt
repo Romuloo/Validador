@@ -1,8 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: org.pr2.dominio.DobleMasterTest
 -------------------------------------------------------------------------------
-Tests run: 4, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.079 s <<< FAILURE! - in org.pr2.dominio.DobleMasterTest
-precisionDobleMasterSinMappings(org.pr2.dominio.DobleMasterTest)  Time elapsed: 0.013 s  <<< FAILURE!
-java.lang.AssertionError
-	at org.pr2.dominio.DobleMasterTest.precisionDobleMasterSinMappings(DobleMasterTest.java:63)
-
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.695 s - in org.pr2.dominio.DobleMasterTest

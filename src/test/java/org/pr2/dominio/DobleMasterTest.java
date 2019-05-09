@@ -21,7 +21,7 @@ public class DobleMasterTest
     private DobleMaster dobleMasterFaltaDeCoberturaConMappings;
     private DobleMaster dobleMasterFaltaDeExactitudSinMappings;
     private DobleMaster dobleMasterFaltaDeExactitudConMappings;
-
+    
     @Before
     public void setUp(){
         Master[] arrayMaster = new Master[2];
@@ -82,4 +82,16 @@ public class DobleMasterTest
     {
         assertTrue( true );
     }
+
+    @Test
+    public void secuenciacionDobleMasterSinMappings()
+    {
+	    assertTrue(dobleMasterCorrectoSinMappings.secuenciacionCorrecta());
+    }
+
+    public void dobleMasterValido()
+    {
+	    assertTrue(dobleMasterCorrectoSinMappings.valido());
+    }
+
 }
