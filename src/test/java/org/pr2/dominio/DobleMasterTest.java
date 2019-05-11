@@ -84,14 +84,14 @@ public class DobleMasterTest
     }
 
     @Test
-    public void secuenciacionDobleMasterSinMappings()
-    {
-	    assertTrue(dobleMasterCorrectoSinMappings.secuenciacionCorrecta());
-    }
-
     public void dobleMasterValido()
     {
 	    assertTrue(dobleMasterCorrectoSinMappings.valido());
     }
 
+    @Test 
+    public void dobleMasterSecuenciacionCorrecta()
+    {
+	    assertTrue(dobleMasterCorrectoSinMappings.secuenciacionCorrecta());
+    }
 }

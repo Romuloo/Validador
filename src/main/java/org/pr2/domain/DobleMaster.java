@@ -3,6 +3,8 @@ package org.pr2.dominio;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.TreeSet;
+import java.util.Set;
 
 /**
  * @author Mariano Fernández López
@@ -61,12 +63,13 @@ public class DobleMaster extends Master{
      * tiene una equivalencia con alguna asignatura del doble máster. 
      */
     public boolean coberturaCadaMaster(){
-       boolean cubiertos = true;
-       for(int i = 0; i <= 1; i++)
-        cubiertos = cubiertos && arrayMaster[i].getCjtoAsignaturas().stream().
+       
+       Set<Asignatura> todas = new TreeSet<>();
+       for(int i = 0; i <= 1; i++) todas.addAll(arrayMaster[i].getCjtoAsignaturas());
+        
+       return todas.stream().
            filter(a -> !this.getCjtoAsignaturas().contains(a)).
                    collect(Collectors.toSet()).isEmpty();
-       return cubiertos; 
     }
 
     /**
@@ -91,21 +94,21 @@ public class DobleMaster extends Master{
   * asignatura aparezca en distinto semestre en un máster simple y en el
   * máster doble.</li>
   */
+   public boolean secuenciacionCorrecta()
+   {
+	   boolean secuencia = true;
 
-   public boolean secuenciacionCorrecta(){
-	  boolean correcta  = true;
-	  for(int s = 1; s <= 2; s++){
-		  int i = s;
-	  	correcta = correcta && (arrayMaster[0].getCjtoAsignaturasSemestre(i).stream().
-           filter(a -> !this.getCjtoAsignaturasSemestre(i).contains(a)).
-                   collect(Collectors.toSet()).isEmpty() || arrayMaster[1].getCjtoAsignaturasSemestre(i).stream().filter(a -> !this.getCjtoAsignaturasSemestre(i).contains(a)).collect(Collectors.toSet()).isEmpty());
-	  
-	  }return correcta;
+	   Set<Asignatura> todasPrimerSemestre = new TreeSet<>();
+	   Set<Asignatura> todasSegundoSemestre = new TreeSet<>();
+
+	   for(int i = 0; i <= 1; i++) todasPrimerSemestre.addAll(arrayMaster[i].getCjtoAsignaturasSemestre(1));
+	   for(int i = 0; i <= 1; i++) todasSegundoSemestre.addAll(arrayMaster[i].getCjtoAsignaturasSemestre(2));
+	
+	return secuencia = this.getCjtoAsignaturasSemestre(1).contains(todasPrimerSemestre) && this.getCjtoAsignaturasSemestre(2).contains(todasSegundoSemestre);
    }
-
-
+ 
    public boolean valido()
    {
-	   return secuenciacionCorrecta() && coberturaCadaMaster() && precisionDobleMaster();
+	   return coberturaCadaMaster() && precisionDobleMaster();
    }
 }

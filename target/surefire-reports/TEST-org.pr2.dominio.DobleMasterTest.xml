@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="org.pr2.dominio.DobleMasterTest" time="0.695" tests="5" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="org.pr2.dominio.DobleMasterTest" time="0.119" tests="6" errors="0" skipped="0" failures="1">
   <properties>
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
     <property name="file.encoding.pkg" value="sun.io"/>
@@ -16,7 +16,7 @@
     <property name="user.country" value="US"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64"/>
-    <property name="sun.java.command" value="/home/romulo/work/practica_master/target/surefire/surefirebooter4104526955483769104.jar /home/romulo/work/practica_master/target/surefire 2019-05-09T07-41-22_673-jvmRun1 surefire1253938769387355979tmp surefire_03211434053570055163tmp"/>
+    <property name="sun.java.command" value="/home/romulo/work/practica_master/target/surefire/surefirebooter1924495499422986837.jar /home/romulo/work/practica_master/target/surefire 2019-05-11T12-20-48_768-jvmRun1 surefire710583621025346334tmp surefire_06116517787012194306tmp"/>
     <property name="surefire.test.class.path" value="/home/romulo/work/practica_master/target/test-classes:/home/romulo/work/practica_master/target/classes:/home/romulo/.m2/repository/junit/junit/4.12/junit-4.12.jar:/home/romulo/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="/home/romulo"/>
@@ -29,7 +29,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="/home/romulo/work/practica_master/target/surefire/surefirebooter4104526955483769104.jar"/>
+    <property name="surefire.real.class.path" value="/home/romulo/work/practica_master/target/surefire/surefirebooter1924495499422986837.jar"/>
     <property name="sun.boot.class.path" value="/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/resources.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jsse.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jce.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/charsets.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jfr.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/classes"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="1.8.0_191-8u191-b12-2ubuntu0.18.10.1-b12"/>
@@ -57,9 +57,14 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="52.0"/>
   </properties>
-  <testcase name="secuenciacionDobleMasterSinMappings" classname="org.pr2.dominio.DobleMasterTest" time="0.201"/>
+  <testcase name="dobleMasterSecuenciacionCorrecta" classname="org.pr2.dominio.DobleMasterTest" time="0.042">
+    <failure type="java.lang.AssertionError">java.lang.AssertionError
+	at org.pr2.dominio.DobleMasterTest.dobleMasterSecuenciacionCorrecta(DobleMasterTest.java:95)
+</failure>
+  </testcase>
+  <testcase name="dobleMasterValido" classname="org.pr2.dominio.DobleMasterTest" time="0.002"/>
   <testcase name="precisionDobleMasterSinMappings" classname="org.pr2.dominio.DobleMasterTest" time="0.001"/>
-  <testcase name="coberturaCadaMasterEnElDobleMasterSinMappings" classname="org.pr2.dominio.DobleMasterTest" time="0.017"/>
-  <testcase name="precisionDobleMasterConMappings" classname="org.pr2.dominio.DobleMasterTest" time="0.004"/>
-  <testcase name="coberturaCadaMasterEnElDobleMasterConMappings" classname="org.pr2.dominio.DobleMasterTest" time="0.004"/>
+  <testcase name="coberturaCadaMasterEnElDobleMasterSinMappings" classname="org.pr2.dominio.DobleMasterTest" time="0.001"/>
+  <testcase name="precisionDobleMasterConMappings" classname="org.pr2.dominio.DobleMasterTest" time="0.001"/>
+  <testcase name="coberturaCadaMasterEnElDobleMasterConMappings" classname="org.pr2.dominio.DobleMasterTest" time="0"/>
 </testsuite>
