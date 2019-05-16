@@ -18,7 +18,6 @@ public class Master{
     private int identificador;
     private String nombre;
     private Set<Asignatura> cjtoAsignaturas = new TreeSet<>();
-
     /**
      * Obtiene el identificador del máster.
      * @return el identificador.
@@ -68,5 +67,6 @@ public class Master{
     public Set<Asignatura> getCjtoAsignaturasSemestre(int i){
 	return cjtoAsignaturas.stream().filter(a -> a.getSemestre() == i).collect(Collectors.toSet());
     }	
+
 
 } 

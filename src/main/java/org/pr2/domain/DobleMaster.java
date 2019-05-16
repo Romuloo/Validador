@@ -5,6 +5,9 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.TreeSet;
 import java.util.Set;
+import java.util.Comparator;
+import java.util.NavigableSet;
+import java.util.HashSet;
 
 /**
  * @author Mariano Fernández López
@@ -64,13 +67,15 @@ public class DobleMaster extends Master{
      */
     public boolean coberturaCadaMaster(){
        
-       Set<Asignatura> todas = new TreeSet<>();
+       Set<Asignatura> todas = new HashSet<>();
        for(int i = 0; i <= 1; i++) todas.addAll(arrayMaster[i].getCjtoAsignaturas());
         
        return todas.stream().
            filter(a -> !this.getCjtoAsignaturas().contains(a)).
                    collect(Collectors.toSet()).isEmpty();
     }
+    
+   
 
     /**
      * <li><b>Precisión del doble máster</b>: para toda asignatura del doble
@@ -78,35 +83,25 @@ public class DobleMaster extends Master{
      */
 
     public boolean precisionDobleMaster(){
-	boolean preciso = true;
-
+	int aux = 0;
         for(Asignatura a : this.getCjtoAsignaturas()){
-	
-       if(!(arrayMaster[0].getCjtoAsignaturas().contains(a)) || !arrayMaster[1].getCjtoAsignaturas().contains(a)) {
-                        preciso = false;
-                        break;
-                }
-	}return preciso ;
+
+       if(!arrayMaster[0].getCjtoAsignaturas().contains(a))
+	      if(!arrayMaster[1].getCjtoAsignaturas().contains(a)) aux++;
+	}return (aux != 0) ? false : true;
+    }
+  
+    public Set obtenerMaster()
+    {
+	NavigableSet<Asignatura> dobleMaster = new TreeSet<>(
+			Comparator.comparing(Asignatura::getIdentificador));
+	dobleMaster.addAll(arrayMaster[0].getCjtoAsignaturas());
+	dobleMaster.addAll(arrayMaster[1].getCjtoAsignaturas());
+		
+	return dobleMaster;
+
     }
 
- /**
-  * <li><b>Secuenciación correcta</b>: no se da el caso de que una
-  * asignatura aparezca en distinto semestre en un máster simple y en el
-  * máster doble.</li>
-  */
-   public boolean secuenciacionCorrecta()
-   {
-	   boolean secuencia = true;
-
-	   Set<Asignatura> todasPrimerSemestre = new TreeSet<>();
-	   Set<Asignatura> todasSegundoSemestre = new TreeSet<>();
-
-	   for(int i = 0; i <= 1; i++) todasPrimerSemestre.addAll(arrayMaster[i].getCjtoAsignaturasSemestre(1));
-	   for(int i = 0; i <= 1; i++) todasSegundoSemestre.addAll(arrayMaster[i].getCjtoAsignaturasSemestre(2));
-	
-	return secuencia = this.getCjtoAsignaturasSemestre(1).contains(todasPrimerSemestre) && this.getCjtoAsignaturasSemestre(2).contains(todasSegundoSemestre);
-   }
- 
    public boolean valido()
    {
 	   return coberturaCadaMaster() && precisionDobleMaster();

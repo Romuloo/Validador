@@ -38,8 +38,9 @@ public class DobleMasterTest
             arrayMaster[1].annadirAsignatura(asignatura12);
             dobleMasterCorrectoSinMappings.annadirAsignatura(asignatura11);
             dobleMasterCorrectoSinMappings.annadirAsignatura(asignatura12); 
-        }
 
+	}	
+	System.out.println(dobleMasterCorrectoSinMappings.obtenerMaster());	
     }
     
     /**
@@ -77,7 +78,7 @@ public class DobleMasterTest
      * Este test comprueba si las asignaturas del doble máster están en
      * alguno de los dos máster. Se asume que hay <i>mappings</i>.  
      */
-    @Test
+    @Test 
     public void precisionDobleMasterConMappings()
     {
         assertTrue( true );
@@ -87,11 +88,5 @@ public class DobleMasterTest
     public void dobleMasterValido()
     {
 	    assertTrue(dobleMasterCorrectoSinMappings.valido());
-    }
-
-    @Test 
-    public void dobleMasterSecuenciacionCorrecta()
-    {
-	    assertTrue(dobleMasterCorrectoSinMappings.secuenciacionCorrecta());
     }
 }

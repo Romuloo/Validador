@@ -1,5 +1,5 @@
 package org.pr2.dominio;
-
+import java.util.*;
 /**
  * @author Mariano Fernández López
  *
@@ -79,5 +79,10 @@ public class Asignatura implements Comparable<Asignatura>{
         this.nombre = nombre;
         this.ects = ects;
         this.semestre = semestre;
+    }
+
+    public String toString()
+    {
+	    return "Nombre: " + nombre + " , Identificador: " + identificador + ", ects: " + ects + ", semestre: " + semestre;
     }
 }    
