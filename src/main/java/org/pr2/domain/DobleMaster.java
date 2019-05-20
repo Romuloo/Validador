@@ -29,12 +29,10 @@ import java.util.HashSet;
  * tiene una equivalencia con alguna asignatura del doble máster.</li>
  * <li><b>Precisión del doble máster</b>: para toda asignatura del doble
  * máster, bien pertenece al máster 1 bien pertenece al máster 2.</li>
- * <li><b>Secuenciación correcta</b>: no se da el caso de que una
- * asignatura aparezca en distinto semestre en un máster simple y en el
- * máster doble.</li>
- * </ol>
  */
-public class DobleMaster extends Master{
+
+public class DobleMaster extends Master
+{
     private Master[] arrayMaster = new Master[2];
     private Map<Asignatura, Asignatura> mapping = new HashMap<>();
 
@@ -52,58 +50,73 @@ public class DobleMaster extends Master{
 
     /**
      * Hace corresponder una asignatura del máster 1 con otra asignatura
-     * del máster 2.
-     *@param asignatura1 asignatura del máster 1.
-     *@param asignatura2 asignatura del máster 2.
+     * del máster 2, si las asignaturas tienen distinto numero de ects o 
+     * distinto semestre, no son convalidables.
+     *
+     *@param as1 asignatura del máster 1.
+     *@param as2 asignatura del máster 2.
+     *
+     * @return si la asignatura ha sido convalidada o no.
      */
-    public void annadirConvalidacion(Asignatura asignatura1, Asignatura asignatura2){
-        mapping.put(asignatura1, asignatura2); 
+    public boolean  annadirConvalidacion(Asignatura as1, Asignatura as2){
+    	
+	    boolean convalidable = false;
+	    
+	if(as1.getEcts() == as2.getEcts() || as1.getSemestre() == as2.getSemestre()){
+		convalidable = true;
+		mapping.put(as1, as2);
+	}
+	return convalidable;
     }
 
     /**
      * <b>Cobertura de cada máster</b>: para toda asignatura de cada máster,
      * bien pertence el conjunto de asignaturas del doble máster, bien
      * tiene una equivalencia con alguna asignatura del doble máster. 
+     *
+     * @return si el doble máster cubre todos los créditos o no.
      */
-    public boolean coberturaCadaMaster(){
-       
-       Set<Asignatura> todas = new HashSet<>();
-       for(int i = 0; i <= 1; i++) todas.addAll(arrayMaster[i].getCjtoAsignaturas());
-        
-       return todas.stream().
-           filter(a -> !this.getCjtoAsignaturas().contains(a)).
-                   collect(Collectors.toSet()).isEmpty();
+    public boolean coberturaCadaMaster()
+    {
+	    boolean cubiertos = true;
+	   
+	   for(int i = 0; i<= 1; i++)
+	cubiertos = cubiertos && arrayMaster[i].getCjtoAsignaturas().stream().filter(a -> !todas().contains(a))
+              .collect(Collectors.toSet()).isEmpty();
+	   
+	   return cubiertos;
     }
     
-   
-
     /**
      * <li><b>Precisión del doble máster</b>: para toda asignatura del doble
      * máster, bien pertenece al máster 1 bien pertenece al máster 2.</li>
+     *
+     * @return si el doble máster es preciso o no.
      */
-
-    public boolean precisionDobleMaster(){
-	int aux = 0;
-        for(Asignatura a : this.getCjtoAsignaturas()){
-
-       if(!arrayMaster[0].getCjtoAsignaturas().contains(a))
-	      if(!arrayMaster[1].getCjtoAsignaturas().contains(a)) aux++;
-	}return (aux != 0) ? false : true;
-    }
-  
-    public Set obtenerMaster()
+    public boolean precisionDobleMaster()
     {
-	NavigableSet<Asignatura> dobleMaster = new TreeSet<>(
-			Comparator.comparing(Asignatura::getIdentificador));
-	dobleMaster.addAll(arrayMaster[0].getCjtoAsignaturas());
-	dobleMaster.addAll(arrayMaster[1].getCjtoAsignaturas());
-		
-	return dobleMaster;
+	Set<Asignatura> asignaturas = new HashSet<>();
+	boolean preciso = true;
 
+	for(int i = 0; i <= 1;  i++) asignaturas.addAll(arrayMaster[i].getCjtoAsignaturas());
+		
+	preciso = preciso && this.getCjtoAsignaturas().stream().filter(a -> !asignaturas.contains(a))
+		.collect(Collectors.toSet()).isEmpty();
+	
+	return preciso;
     }
 
-   public boolean valido()
-   {
-	   return coberturaCadaMaster() && precisionDobleMaster();
-   }
+    /**
+     * Conjunto donde almacena todas las asignaturas del doble master y las convalidadas.
+     *
+     * @return conjunto con todas las asignaturas.
+     */
+      public Set<Asignatura> todas(){
+
+         Set<Asignatura> asigs = getCjtoAsignaturas().stream().map(a -> mapping.get(a)).filter(a -> a !=null).collect(Collectors.toSet());
+   asigs.addAll(getCjtoAsignaturas());
+        return asigs;
+        }
+
 }
+
