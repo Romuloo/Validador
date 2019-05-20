@@ -1,19 +1,36 @@
-package org.pr2.dominio;
+/**
+ *Copyright [2019] [Cristina Abdul Massih, Javier Linares]
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+http://www.apache.org/licenses/LICENSE-2.0
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+ */
+
+
+package org.pr2.domain;
 
 import java.util.stream.Collectors; 
 import java.util.Set;
 import java.util.TreeSet;
 
+
 /**
- * @author Mariano Fernández López
- * 
- * AVISO: si el estudiante detecta código no válido, deberá
- * modificarlo para que lo sea.
+ * Clase Master.
  *
- * Cualquier máster tiene un identificador, un nombre y un cojunto de
+ *  Cualquier máster tiene un identificador, un nombre y un cojunto de
  * asignaturas.
  *
+ * @author Mariano Fernández López
+ * @author Cristina Abdul Massih
+ * @author Javier Linares Castrillón
+ *
  */
+
 public class Master{
     private int identificador;
     private String nombre;
@@ -58,15 +75,5 @@ public class Master{
     public Set<Asignatura> getCjtoAsignaturas() {
         return cjtoAsignaturas;
     }
-
-    /**
-     * Devuelve el conjunto de Asignaturas del semestre especificado.
-     * @param i semestre.
-     * @return conjunto de Asignaturas del semestre i.
-     */
-    public Set<Asignatura> getCjtoAsignaturasSemestre(int i){
-	return cjtoAsignaturas.stream().filter(a -> a.getSemestre() == i).collect(Collectors.toSet());
-    }	
-
 
 } 

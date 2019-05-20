@@ -1,4 +1,17 @@
-package org.pr2.dominio;
+/**
+ *Copyright [2019] [Cristina Abdul Massih, Javier Linares]
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+http://www.apache.org/licenses/LICENSE-2.0
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+ */
+
+package org.pr2.domain;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,9 +23,7 @@ import java.util.NavigableSet;
 import java.util.HashSet;
 
 /**
- * @author Mariano Fernández López
- * @author Javier Linares Castrillón
- *
+ * Clase DobleMaster.
  *
  * Cualquier doble máster tiene un identificador, un nombre, un conjunto
  * de asignaturas, una relación con los dos máster que engloba, y una
@@ -23,12 +34,19 @@ import java.util.HashSet;
  * 
  * Esta clase incluye métodos para realizar las siguientes
  * comprobaciones:
- * <ol>
+ * 
+ *
  * <li><b>Cobertura de cada máster</b>: para toda asignatura de cada máster, 
  * bien pertence el conjunto de asignaturas del doble máster, bien
- * tiene una equivalencia con alguna asignatura del doble máster.</li>
+ * tiene una equivalencia con alguna asignatura del doble máster.
+ *
  * <li><b>Precisión del doble máster</b>: para toda asignatura del doble
- * máster, bien pertenece al máster 1 bien pertenece al máster 2.</li>
+ * máster, bien pertenece al máster 1 bien pertenece al máster 2.
+ *
+ * @author Mariano Fernández López
+ * @author Javier Linares Castrillón
+ * @author Cristina Abdul Massih
+
  */
 
 public class DobleMaster extends Master

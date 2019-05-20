@@ -1,13 +1,27 @@
-package org.pr2.dominio;
+/**
+ *Copyright [2019] [Cristina Abdul Massih, Javier Linares]
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+http://www.apache.org/licenses/LICENSE-2.0
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+ */
+
+package org.pr2.domain;
 import java.util.*;
 /**
- * @author Mariano Fernández López
- *
- * AVISO: si el estudiante detecta código no válido, deberá
- * modificarlo para que lo sea.
+ * Clase Asignatura.
  *
  * Cualquier asignatura tiene un identificador, un nombre, el número de
- * semestre en que se imparte y el número de créditos ECTS.
+ *semestre en que se imparte y el número de créditos ECTS.
+ *
+ * @author Mariano Fernández López
+ * @author Javier Linares Castrillón
+ * @author Cristina Abdul Massih
  */
 public class Asignatura implements Comparable<Asignatura>{
     private int identificador;
