@@ -114,14 +114,12 @@ public class DobleMaster extends Master
     public boolean precisionDobleMaster()
     {
 	Set<Asignatura> asignaturas = new HashSet<>();
-	boolean preciso = true;
 
 	for(int i = 0; i <= 1;  i++) asignaturas.addAll(arrayMaster[i].getCjtoAsignaturas());
 		
-	preciso = preciso && this.getCjtoAsignaturas().stream().filter(a -> !asignaturas.contains(a))
+	return this.getCjtoAsignaturas().stream().filter(a -> !asignaturas.contains(a))
 		.collect(Collectors.toSet()).isEmpty();
 	
-	return preciso;
     }
 
     /**
