@@ -1,5 +1,5 @@
 /**
- *Copyright [2019] [Cristina Abdul Massih, Javier Linares]
+ *Copyright [2020] [Javier Linares Castrillón]
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
@@ -26,7 +26,6 @@ import java.util.TreeSet;
  * asignaturas.
  *
  * @author Mariano Fernández López
- * @author Cristina Abdul Massih
  * @author Javier Linares Castrillón
  *
  */

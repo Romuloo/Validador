@@ -1,5 +1,5 @@
 /**
- *Copyright [2019] [Cristina Abdul Massih, Javier Linares]
+ *Copyright [2020]  [Javier Linares Castrillón]
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
@@ -45,8 +45,6 @@ import java.util.HashSet;
  *
  * @author Mariano Fernández López
  * @author Javier Linares Castrillón
- * @author Cristina Abdul Massih
-
  */
 
 public class DobleMaster extends Master
@@ -117,7 +115,7 @@ public class DobleMaster extends Master
 
 	for(int i = 0; i <= 1;  i++) asignaturas.addAll(arrayMaster[i].getCjtoAsignaturas());
 		
-	return this.getCjtoAsignaturas().stream().filter(a -> !asignaturas.contains(a))
+	return this.todas().stream().filter(a -> !asignaturas.contains(a))
 		.collect(Collectors.toSet()).isEmpty();
 	
     }
@@ -129,7 +127,7 @@ public class DobleMaster extends Master
      */
       public Set<Asignatura> todas(){
 
-         Set<Asignatura> asigs = getCjtoAsignaturas().stream().map(a -> mapping.get(a)).filter(a -> a !=null).collect(Collectors.toSet());
+         Set<Asignatura> asigs = this.getCjtoAsignaturas().stream().map(a -> mapping.get(a)).filter(a -> a !=null).collect(Collectors.toSet());
    asigs.addAll(getCjtoAsignaturas());
         return asigs;
         }

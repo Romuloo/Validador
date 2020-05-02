@@ -1,5 +1,5 @@
 /**
- *Copyright [2019] [Cristina Abdul Massih, Javier Linares]
+ *Copyright [2020] [Javier Linares Castrillón]
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
@@ -26,7 +26,6 @@ import org.junit.Before;
  * doble máster. 
  *
  * @author Javier Linares Castrillón
- * @author Cristina Abdul Massih
  * @author Mariano Fernández López
  *
  *  
@@ -100,8 +99,8 @@ public class DobleMasterTest
 	dobleMasterFaltaDeExactitudConMappings = new DobleMaster(6, "Doble Máster Falta de Precision Sin Mappings",
 arrayMaster);
 
-	dobleMasterFaltaDeExactitudConMappings.annadirAsignatura(a8);
-	dobleMasterFaltaDeExactitudConMappings.annadirConvalidacion(a8, a4);
+	dobleMasterFaltaDeExactitudConMappings.annadirAsignatura(a4);
+	dobleMasterFaltaDeExactitudConMappings.annadirConvalidacion(a4, a8);
 	
 		
     }
